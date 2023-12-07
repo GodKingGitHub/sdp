@@ -6,13 +6,21 @@
 //  Copyright © 2020 sunlubo. All rights reserved.
 //
 
-import Core
-
 extension SessionDescription {
 
   public static func deserialize(from string: String) throws -> Self {
     var parser = SDPParser(source: string)
     return try parser.parse()
+  }
+}
+
+extension Optional {
+
+  public func unwrap(or error: Error) throws -> Wrapped {
+    guard let wrapped = self else {
+      throw error
+    }
+    return wrapped
   }
 }
 
