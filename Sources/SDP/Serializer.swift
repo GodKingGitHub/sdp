@@ -11,54 +11,55 @@ extension SessionDescription {
   public func serialize() -> String {
     var string = ""
     string.append("v=0")
-    string.append("\n")
+    string.append("\r\n")
     string.append(origin.serialize())
-    string.append("\n")
+    string.append("\r\n")
     string.append("s=\(sessionName)")
     sessionInformation.map { i in
-      string.append("\n")
+      string.append("\r\n")
       string.append("i=\(i)")
     }
     uri.map { u in
-      string.append("\n")
+      string.append("\r\n")
       string.append("u=\(u)")
     }
     emailAddress.map { e in
-      string.append("\n")
+      string.append("\r\n")
       string.append("e=\(e)")
     }
     phoneNumber.map { p in
-      string.append("\n")
+      string.append("\r\n")
       string.append("p=\(p)")
     }
     connectionInformation.map { c in
-      string.append("\n")
+      string.append("\r\n")
       string.append("c=\(c)")
     }
     bandwidths.forEach { b in
-      string.append("\n")
+      string.append("\r\n")
       string.append(b.serialize())
     }
     timeDescriptions.forEach { t in
-      string.append("\n")
+      string.append("\r\n")
       string.append(t.serialize())
     }
     timeZones.forEach { z in
-      string.append("\n")
+      string.append("\r\n")
       string.append(z.serialize())
     }
     encryptionKey.map { k in
-      string.append("\n")
+      string.append("\r\n")
       string.append("k=\(k)")
     }
     attributes.forEach { a in
-      string.append("\n")
+      string.append("\r\n")
       string.append(a.serialize())
     }
     mediaDescriptions.forEach { m in
-      string.append("\n")
+      string.append("\r\n")
       string.append(m.serialize())
     }
+    string.append("\n")
     return string
   }
 }
@@ -89,7 +90,7 @@ extension SessionDescription.TimeDescription {
   public func serialize() -> String {
     var string = timing.serialize()
     repeatTimes.forEach { r in
-      string.append("\n")
+      string.append("\r\n")
       string.append(r.serialize())
     }
     return string
@@ -129,23 +130,23 @@ extension SessionDescription.MediaDescription {
   public func serialize() -> String {
     var string = mediaName.serialize()
     mediaTitle.map { i in
-      string.append("\n")
+      string.append("\r\n")
       string.append("i=\(i)")
     }
     connectionInformation.map { c in
-      string.append("\n")
+      string.append("\r\n")
       string.append(c.serialize())
     }
     bandwidths.forEach { b in
-      string.append("\n")
+      string.append("\r\n")
       string.append(b.serialize())
     }
     encryptionKey.map { k in
-      string.append("\n")
+      string.append("\r\n")
       string.append("k=\(k)")
     }
     attributes.forEach { a in
-      string.append("\n")
+      string.append("\r\n")
       string.append(a.serialize())
     }
     return string
