@@ -611,7 +611,7 @@ struct SDPParser {
       media: media,
       port: .init(value: port, range: range),
       protos: protos,
-      formats: fields.dropFirst(3).map(String.init)
+      formats: Array(fields.dropFirst(3))
     )
   }
 
