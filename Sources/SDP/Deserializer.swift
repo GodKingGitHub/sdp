@@ -171,7 +171,7 @@ struct SDPParser {
   }
 
   init(source: String) {
-    self.lines = source.split(separator: "\n").map(String.init)
+    self.lines = source.split(separator: "\r\n").map(String.init)
     self.index = lines.startIndex
   }
 
